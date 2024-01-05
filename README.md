@@ -4,9 +4,9 @@
 
 ## Content
 
-- [ ] Java Spring **Server**
-- [ ] Java Spring **Client**
-- [ ] Data Processing
-  - [ ] Adding Numbers
+- [x] Java Spring **Server**
+- [x] Java Spring **Client**
+- [x] Data Processing
+  - [x] Adding Numbers
   - [ ] Parsing Strings
 - [ ] Result into Spreadsheet
