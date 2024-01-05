@@ -1,21 +1,34 @@
 package de.schlueter.client;
 
 import java.io.InputStream;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class Client {
-    public void request() {
+    String url;
+
+    public Client(String url, int port, String route) {
+        StringBuilder urlsb = new StringBuilder();
+        urlsb.append(url);
+        urlsb.append(":");
+        urlsb.append(port);
+        urlsb.append(route);
+        this.url = urlsb.toString();
+    }
+
+    public void request(int firstNumber, int secondNumber) {
+        StringBuilder urlsb = new StringBuilder();
+        urlsb.append(url);
+        urlsb.append("?firstNumber=");
+        urlsb.append(firstNumber);
+        urlsb.append("&secondNumber=");
+        urlsb.append(secondNumber);
+
         try {
-            URL url = new URL("http://localhost:8080/");
+            URL url = new URL(urlsb.toString());
 
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
-
-            InputStream in = con.getInputStream();
-            byte[] buffer = new byte[1024];
-            int bytesRead = in.read(buffer);
-            String response = new String(buffer, 0, bytesRead);
-            System.out.println(response);
 
         } catch (Exception e) {
             e.printStackTrace();
