@@ -1,6 +1,5 @@
 package de.schlueter.client;
 
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -23,6 +22,24 @@ public class Client {
         urlsb.append(firstNumber);
         urlsb.append("&secondNumber=");
         urlsb.append(secondNumber);
+
+        try {
+            URL url = new URL(urlsb.toString());
+
+            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+            con.setRequestMethod("GET");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void request(String input){
+
+        StringBuilder urlsb = new StringBuilder();
+        urlsb.append(url);
+        urlsb.append("?input=");
+        urlsb.append(input);
 
         try {
             URL url = new URL(urlsb.toString());
